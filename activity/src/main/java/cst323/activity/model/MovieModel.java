@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -27,16 +29,18 @@ public class MovieModel {
     private String title;
 
     @Column(name = "release_year")
-    @Size(max = 4, message = "Year is a 4 digit format")
-    private int year;
+    @Min(value = 1900, message = "Year must be after 1900")
+    @Max(value = 2099, message = "Year must be before 2100")
+    private Integer year;
 
     @Column(name = "genre")
     @Size(max = 45, message = "Genre limit is 45 characters")
     private String genre;
 
     @Column(name = "rating")
-    @Size(min = 0, max = 10, message = "Rating is from 0 to 10")
-    private int rating;
+    @Min(value = 0, message = "Rating must be from 0-10")
+    @Max(value = 10, message = "Rating must be from 0-10")
+    private Integer rating;
 
     @Column(name = "image")
     private String image;

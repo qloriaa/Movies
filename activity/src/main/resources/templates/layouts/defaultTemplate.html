@@ -14,7 +14,7 @@
 
 
 	<!-- access css stylesheet -->
-	<link rel="stylesheet" href="" th:href="@{.../static/siteStyle.css}" />
+	<link rel="stylesheet" href="" th:href="@{/static/siteStyle.css}" />
 
 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.datatables.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.minn.js"></script>
@@ -33,7 +33,10 @@
 		<div th:replace="~{layouts/NavBar :: navbar}">My Navigation Bar</div>
 
 		<h2 th:text="${title}">Default Message Text</h2><br />
-		<img th:src="@{/images/pop-mini.png}" /><br /><br />
+		
+		<div layout:fragment="image">
+			<img th:src="@{/images/pop-mini.png}" alt="website logo"/><br /><br />
+		</div>
 
 		<section layout:fragment="content">
 			<p>My Body Contents</p>

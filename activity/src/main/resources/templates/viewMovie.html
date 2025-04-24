@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/defaultTemplate}">
+
+<body>
+    <!-- Display movie image -->
+    <div th:if="${url != null}">
+        <div layout:fragment="image">
+            <p class="card-text" th:text="${url} ?: 'default image'">Index</p>
+            <img th:src="${url} ?: @{/images/pop-mini.png}" /><br /><br />
+        </div>
+    </div>
+
+    <!-- Display Movie details -->
+    <div layout:fragment="content" class="container">        
+        <table>
+                <tr>
+                    <th>Index : </th>
+                    <td>
+                        <p class="card-text" th:text="${movie.getId()}">Index</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Title : </th>
+                    <td>
+                        <p class="card-text" th:text="${movie.getTitle()}">Title </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Year Released : </th>
+                    <td>
+                        <p class="card-text" th:text="${movie.getYear()}">Year</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Genre : </th>
+                    <td>
+                        <p class="card-text" th:text="${movie.getGenre()}">Genre</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Rating : </th>
+                    <td>
+                        <p class="card-text" th:text="${movie.getRating()}">Rating</p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <a th:href="@{/movies/update/{id}(id=${movie.getId()})}">
+                            <button class="btn btn-info">Update</button>
+                        </a>
+                        
+                        <a th:href="@{/movies/delete/{id}(id=${movie.getId()})}">
+                            <button class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+        </table>
+
+    </div>
+
+</body>
+
+</html>

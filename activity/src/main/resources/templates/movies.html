@@ -42,7 +42,7 @@
 										<p class="card-text" th:text="${movie.getTitle()}"> Title </p>
 									</td>
 									<td>
-										<p class="card-text" th:text="${movie.getRating()}"> Rating </p>
+										<p class="card-text" th:number="${movie.getRating()}"> Rating </p>
 									</td>
 									<td>
 										<a th:href="@{/movies/view/{id}(id=${movie.getId()})}">

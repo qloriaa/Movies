@@ -9,10 +9,55 @@
 
 <body>
 	<div layout:fragment="content">
-		<form>
-			<h1> Search Page Contents here </h1>
-		</form>
+		<!-- Input fields-->
+		<form class="form-default" th:action="@{/movies/search}" th:object="${searchModel}" method="post">
+			<table>
+				<thead>
+					<tr> <th>Search Results ...</th> </tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="title">By Title:  </label>
+								<input type="text" th:field="*{title}" placeholder="Movie Title" class="form-control">
+							</div>
+							
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="text">By Year Released:  </label>
+								<input type="text" id="*{year}" placeholder="Year released" class="form-control">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="genre">By Genre:  </label>
+								<input type="text" id="*{genre}" placeholder="Movie Genre" class="form-control">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="rating">By Rating:  </label>
+								<input type="number" th:field="*{rating}" placeholder="Rating out of 10" class="form-control" th:classappend="${#fields.hasErrors('rating')} ? 'is-invalid' : ''">
+									<span class="error" th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></span>
+							</div>
+						</td>
+					</tr>
 		
+					<!-- Submit -->
+					<div class="form-group">
+						<input type="submit" value="Submit" class="btn btn-primary">
+					</div>
+				</tbody>
+			</table>
+		</form>
 	</div>
 </body>
 

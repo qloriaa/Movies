@@ -3,18 +3,32 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Create New Entry</title>
+	<title>Update Movie Review</title>
 
 </head>
 
 <body>
 	<div layout:fragment="content">
-		<!-- Input fields-->
-		<form class="form-default" th:action="@{/movies/new}" th:object="${movieModel}" method="post">
-
+		
+		<form class="form-default" th:action="@{/movies/update}" th:object="${movie}" method="post">
+            <!-- Keep ID - Needed to update using JPA Repository save() method -->
+            <div class="form-group" hidden>
+                <input type="number" th:field="*{id}" class="form-control" th:classappend="${#fields.hasErrors('id')} ? 'is-invalid' : ''">
+                <span class="error" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+            </div>
+            
+            <!-- Input fields-->
 			<table>
 				<tbody>
 					<div class="card-body">
+                        <tr>
+							<td>
+								<label for="id">ID: </label>
+							</td>
+							<td>
+								<p th:text="${movie.getId}"> ID number </p>
+							</td>
+						</tr>
 						<tr>
 							<td>
 								<label for="title">Title: </label>

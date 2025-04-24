@@ -13,6 +13,11 @@ public interface MovieRepository extends JpaRepository<MovieModel, Long> {
     Optional<MovieModel> findById(Long id);
 
     // used for search function
-    List<MovieModel> findByTitle(String title);
+    List<MovieModel> findByTitleContainsIgnoreCase(String title);
 
+    List<MovieModel> findByYear(int year);
+
+    List<MovieModel> findByGenreContainsIgnoreCase(String genre);
+
+    List<MovieModel> findByRating(int rating);
 }
