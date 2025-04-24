@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Page Title</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.datatables.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.datatables.css">
+
+
+	<!-- access css stylesheet -->
+	<link rel="stylesheet" href="" th:href="@{.../static/siteStyle.css}" />
+
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.datatables.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.minn.js"></script>
+	<script src="//cdn.databales.net/responsive/2.2.0/js/datatables.responsive.js"></script>
+</head>
+
+<body>
+	<div align="center">
+
+		<div align="center">
+			<h1 style="text-align: center; font-weight: 400;">Movie Ratings!!</h1>
+			<h4 style="font-family: Parisienne; font-style: italic;">-- Note: These are MY rating based on MY taste. --
+			</h4>
+		</div>
+
+		<div th:replace="~{layouts/NavBar :: navbar}">My Navigation Bar</div>
+
+		<h2 th:text="${title}">Default Message Text</h2><br />
+		<img th:src="@{/images/pop-mini.png}" /><br /><br />
+
+		<section layout:fragment="content">
+			<p>My Body Contents</p>
+		</section>
+	</div>
+</body>
+
+
+<footer>
+	<br>
+	<h5 style="color:palevioletred; text-align: center; position: fixed; bottom: 0; width: 100%;">Copyright 2025 Grand
+		Canyon University</h5>
+</footer>
+
+</html>

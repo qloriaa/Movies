@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<title>View All Movies</title>
+
+</head>
+
+<body>
+	<div layout:fragment="content" class="container">
+
+		<!-- IF : Empty List Output -->
+		<div th:if="${#lists.isEmpty(movies)}">
+			<h4> { No movie reviews found } </h4>
+		</div>
+		
+
+		<!-- ELSE : Traverse list to display movies -->
+		 <div th:unless="${#lists.isEmpty(movies)}" class="movie-list">
+			<div class="d-flex flex-column">
+				<table>
+					<!-- Header -->
+					<thead>
+						<tr>
+							<th>Index : </th>
+							<th>Title : </th>
+							<th>Rating : (*/10) </th>
+							<th></th> <!-- View Button -->
+						</tr>
+					</thead>
+					
+					<!-- Entries -->
+					<tbody>
+						<div th:each="movie : ${movies}" class="card">
+							<div class="card-body">
+								<tr>
+									<td>
+										<p class="card-text" th:text="${movie.getId()}"> Index </p>
+									</td>
+									<td>
+										<p class="card-text" th:text="${movie.getTitle()}"> Title </p>
+									</td>
+									<td>
+										<p class="card-text" th:text="${movie.getRating()}"> Rating </p>
+									</td>
+									<td>
+										<a th:href="@{/movies/view/{id}(id=${movie.getId()})}">
+											<button class="btn btn-info"> View </button>
+										</a>
+									</td>
+								</tr>
+							</div>
+						</div>
+					</tbody>
+				</table>
+			</div>
+		 </div>
+		
+	</div>
+</body>
+
+</html>
