@@ -80,6 +80,8 @@ public class MovieModel {
     }
 
     public String getTitle() {
+        System.out.println("getting title");
+
         return title;
     }
 

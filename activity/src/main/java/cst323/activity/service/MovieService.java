@@ -51,6 +51,7 @@ public class MovieService {
         try {
             List<MovieModel> moviesFound = movieRepository.findAll();
             System.out.println("List of movies found.");
+
             return moviesFound;
         } catch (Exception ex) {
 
