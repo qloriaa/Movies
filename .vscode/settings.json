@@ -1,4 +1,5 @@
 {
         "appService.defaultWebAppToDeploy": "/subscriptions/ed8c391b-03c5-45ab-a3c2-96a1a92a5944/resourceGroups/CST323-Resource/providers/Microsoft.Web/sites/MovieRatings",
-        "appService.deploySubpath": "."
+        "appService.deploySubpath": ".",
+        "java.configuration.updateBuildConfiguration": "interactive"
 }
